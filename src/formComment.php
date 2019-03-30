@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="col-6 my-5">
 <form action="formComment.php" method="post">
-    <div class="form-group bg-light">
+    <div class="form-group">
         <label for="comment">Ajoutez un commentaire de moins de 140 caracteres</label>
         <textarea class="form-control" id="comment" rows="4" name="comment"
                   maxlength="140" required><?= $data['comment'] ?? '' ?></textarea>
