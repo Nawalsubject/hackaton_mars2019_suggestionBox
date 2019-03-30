@@ -142,6 +142,11 @@ body{
     padding: 20px;
 }
 
+.p-15 {
+    padding: 15px;
+}
+
+
 .user-card .card-block .user-social-link i {
     font-size: 30px;
 }
