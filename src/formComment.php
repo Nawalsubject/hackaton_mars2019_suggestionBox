@@ -28,7 +28,9 @@ if (empty($errors)) {
 
     header('Location: ../public/index.php');
     exit();
-} ?>
+}
+
+}?>
 
 <form action="formComment.php" method="post">
     <div class="form-group ">
