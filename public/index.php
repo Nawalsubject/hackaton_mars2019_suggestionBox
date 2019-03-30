@@ -28,7 +28,7 @@ $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 $queryBestIdeas = "SELECT COUNT(eval) as counteval,  idea.* ";
 $queryBestIdeas .= " FROM eval JOIN idea ON ideaid=ididea ";
 $queryBestIdeas .= " WHERE eval GROUP BY idea.ididea ";
-$queryBestIdeas .= " ORDER BY counteval DESC;";
+$queryBestIdeas .= " ORDER BY counteval DESC  LIMIT 3;";
 $statementBestIdeas= $pdo->query($queryBestIdeas);
 $bestideas = $statementBestIdeas->fetchAll(PDO::FETCH_ASSOC);
 ?>

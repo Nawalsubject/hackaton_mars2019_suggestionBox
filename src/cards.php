@@ -1,6 +1,5 @@
 <div class="col-md-4">
     <div class="card <?= $colorcards['bordercolor'] ?> user-card ">
-        <a class="card-img-overlay" href="www.google.fr">
             <div class="card-block py-3 text-left">
                 <h5 class="f-w-600"><?= ucfirst(strtolower($idea['firstname'])) . ' ' . strtoupper($idea['lastname']) ?>  </h5>
             </div>
@@ -8,6 +7,7 @@
                 <h4 class="col"><?= $idea['title'] ?></h4>
             </div>
             <div class="card-block">
+                <hr>
                 <div class="">
                     <p class="m-t-15 text-muted text-justify"><?= $idea['message'] ?> </p>
                 </div>
@@ -44,7 +44,10 @@
                 echo $mysqldate;
                 ?>
             </p>
-        </a>
     </div>
+    <div class="card-footer text-center">
+        <a href="idea.php?id= <?= $idea['ididea'] ?>" class="btn <?= $colorcards['bordercolor'] ?>">Ca fait réfléchir ? </a></div>
+</div>
+
 
 </div>
