@@ -65,3 +65,8 @@ a {
 .footerBotron ul {
     list-style-type: none;
 }
+
+
+div.jumbotron.headerBotron.jumbotron-fluid.m-0 div.container.justify-content-center div.card.user-card.headerBotron.pb-0 div.card-block p.mb-0.mt-1.pt-2.text-muted.text-right.text_date{
+    font-size: 1rem;
+}

@@ -2,12 +2,12 @@
     <div class="card <?= $colorcards['bordercolor'] ?> user-card ">
             <div class="card-block py-3 text-left">
                 <h5 class="f-w-600"><?= ucfirst(strtolower($idea['firstname'])) . ' ' . strtoupper($idea['lastname']) ?> </h5>
+                <div class="card-body text-right p-1">
+                    <h3><span class="card-text"><img class="iconpic" alt="Idée" src="assets/img/<?= tag($idea['categoryid']); ?>"></h3>
+                </div>
+
             </div>
-        <div class="card-img-overlay">
-            <div class="card-body text-right p-1">
-                <h3><span class="card-text"><img class="iconpic" alt="Idée" src="assets/img/<?= tag($idea['categoryid']); ?>"></h3>
-            </div>
-        </div>
+
             <div class="card-header py-3 text-center">
                 <h4 class="col"><?= $idea['title'] ?> </h4>
             </div>
@@ -50,7 +50,8 @@
             </p>
     </div>
     <div class="card-footer text-center">
-        <a href="idea.php?id= <?= $idea['ididea'] ?>" class="btn <?= $colorcards['bordercolor'] ?>">Ca fait réfléchir ? </a></div>
+        <a href="idea.php?id= <?= $idea['ididea'] ?>" class="btn <?= $colorcards['bordercolor'] ?>">Ca fait réfléchir ? </a>
+    </div>
 </div>
 
 
