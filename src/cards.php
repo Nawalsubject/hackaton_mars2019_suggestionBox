@@ -5,7 +5,7 @@
             </div>
         <div class="card-img-overlay">
             <div class="card-body text-right p-1">
-                <h3><span class="card-text"><img class="iconpic" src="assets/img/<?= tag($idea['categoryid']); ?>"></h3>
+                <h3><span class="card-text"><img class="iconpic" alt="Idée" src="assets/img/<?= tag($idea['categoryid']); ?>"></h3>
             </div>
         </div>
             <div class="card-header py-3 text-center">
