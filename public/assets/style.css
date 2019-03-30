@@ -1,9 +1,49 @@
+
+@import url('https://fonts.googleapis.com/css?family=Cabin+Sketch');
+
+h2, h3 {
+    font-family: 'Cabin Sketch', cursive;
+}
+h2 {
+    font-size:2.2rem;
+}
+h3 {
+    font-size:1.8rem;
+}
+
+
 .navbar {
     background-color: #00BCAC;
 }
+.nav-link {
+    font-size: 1.3rem;
+}
+
+/*.navbar-brand {
+    width: 5%;
+    height: 200px;
+}*/
 
 a {
     color: white;
+}
+
+.headerCard {
+    width: 50%;
+    height: 4rem;
+}
+
+.headerBotron {
+    background-color: #DFDBE3;
+}
+
+.headerBotron p{
+    font-size: 1.3rem;
+    font-weight: lighter;
+}
+.headerBotron > span {
+    font-style: italic;
+    font-weight: bold;
 }
 
 .footerBotron {
@@ -13,41 +53,3 @@ a {
 .footerBotron ul {
     list-style-type: none;
 }
-
-/* CSS Document */
-
-body{margin-top: 50px; margin-bottom: 100px;}
-
-/* equal card height */
-.row-equal > div[class*='col-'] {
-    display: flex;
-    flex: 1 0 auto;
-}
-
-.row-equal .card {
-    width: 100%;
-}
-
-/* ensure equal card height inside carousel */
-.carousel-inner>.row-equal.active,
-.carousel-inner>.row-equal.next,
-.carousel-inner>.row-equal.prev {
-    display: flex;
-}
-
-/* prevent flicker during transition */
-.carousel-inner>.row-equal.active.left,
-.carousel-inner>.row-equal.active.right {
-    opacity: 0.5;
-    display: flex;
-}
-
-
-/* control image height */
-.card-img-top-250 {
-    max-height: 250px;
-    overflow:hidden;
-}
-
-
-.card-header{color:dodgerblue}

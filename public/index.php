@@ -1,3 +1,26 @@
+<?php
+
+require '../src/connec.php';
+$pdo = new PDO(DSN, USER, PASS);
+
+/** DATA RETRIEVAL */
+
+$pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+// recovers categories table //
+$queryCategory = "SELECT * FROM category";
+$statementCategory = $pdo->query($queryCategory);
+$categories = $statementCategory->fetchAll(PDO::FETCH_ASSOC);
+// recovers evaluations table //
+$queryEval = "SELECT * FROM eval";
+$statementEval = $pdo->query($queryEval);
+$evaluations = $statementEval->fetchAll(PDO::FETCH_ASSOC);
+// recovers ideas table //
+$queryIdea = "SELECT * FROM idea";
+$statementIdea = $pdo->query($queryIdea);
+$ideas = $statementIdea->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,36 +29,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
     <link rel="stylesheet" href="assets/style.css"/>
+    <link rel="stylesheet" href="assets/cards.css"/>
 
     <title>Just box it</title>
 </head>
-<body>
+<body class="m-0">
 
 <?php require 'header.php' ?>
 
-<h1>Hello, world!</h1>
-
-
-<section class="carousel slide" class="my-3" data-ride="carousel" id="postsCarousel">
+<section>
+    <h2 class="text-warning text-center my-3">LES MEILLEURES IDEES DU MOMENT ...</h2>
     <div class="container">
         <div class="row">
-            <div class="col-12 text-center mb-4">
-                <a class="btn btn-outline-secondary prev" href="" title="go back"><i class="fa fa-lg fa-chevron-left"></i></a>
-                <a class="btn btn-outline-secondary next" href="" title="more"><i class="fa fa-lg fa-chevron-right"></i></a>
-            </div>
-        </div>
-    </div>
-    <div class="container p-t-2 m-t-2 carousel-inner">
-        <div class="row row-equal carousel-item active m-t-0">
-            <?php include '../src/cards.php' ?>
-            <?php include '../src/cards.php' ?>
-            <?php include '../src/cards.php' ?>
-
-        </div>
-        <div class="row row-equal carousel-item m-t-0">
             <?php include '../src/cards.php' ?>
             <?php include '../src/cards.php' ?>
             <?php include '../src/cards.php' ?>
@@ -45,7 +54,6 @@
 
 
 <?php require 'footer.php'?>
-
 <!-- Optional JavaScript -->
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
