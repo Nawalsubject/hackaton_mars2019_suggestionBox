@@ -2,6 +2,7 @@
 
 // connection to table "category" //
 require '../src/connec.php';
+require '../src/functions.php';
 require '../src/counterIdea.php';
 $pdo = new PDO(DSN, USER, PASS);
 $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
@@ -45,7 +46,7 @@ $idea = $statementIdea->fetch(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="assets/cards.css"/>
     <title>Just box it</title>
 </head>
-<body>
+<body class="m-0">
 <?php require 'header.php' ?>
 <main>
 

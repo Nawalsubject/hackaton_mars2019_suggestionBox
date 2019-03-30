@@ -1,6 +1,6 @@
 <?php
-
-require 'functions.php';
+/*
+require 'functions.php';*/
 
 $pdo = new PDO(DSN, USER, PASS);
 $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
@@ -34,8 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $statement->execute();
 
-        header('Location: index.php');
-        exit();
+/*        header('Location: '. $_SERVER["PHP_SELF"]);
+        exit();*/
     }
 
 } ?>
