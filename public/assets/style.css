@@ -3,6 +3,18 @@
     background: linear-gradient(45deg,#00B29F,#00B29F);
 }
 
+.btn-primary {
+    background: darkgrey;
+}
+
+.btn {
+    color: black;
+    font-weight: bold;
+}
+.form-group {
+    font-weight: bold;
+}
+
 .navbar {
     background-color: #00BCAC;
 }

@@ -1,13 +1,33 @@
 <?php
-/*
+
 if ($_SERVER['REQUEST_METHOD'] ==='POST') {
     $errors =[];
 
-    if (empty($_POST))
+    if (empty($_POST['lastname']) > 255) {
+        $errors['lastname'] = "Votre nom de famille ne peut pas dépasser 255 caractères.";
+    }
+
+    if (empty($_POST['fistname']) > 255) {
+        $errors['firstname'] = "Votre prénom ne peut pas dépasser 255 caractères";
+    }
+
+    if (empty($_POST['title']) > 45) {
+        $errors['title'] = "Votre titre ne peut pas dépasser 45 caractères";
+    }
+    if (empty($_POST['message']) > 140) {
+        $errors['message'] = "Votre message ne peut pas dépasser 140 caractères";
+    }
+
+    if (count($errors) == 0) {
+        header("success.php");
+        exit();
+    }
+}
 
 
 
-*/?>
+
+?>
 
 <!doctype html>
 <html lang="en">
@@ -22,6 +42,13 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST') {
     <title>Just box it</title>
 </head>
 <body>
+<header>
+    <?php
+
+    require 'header.php';
+
+    ?>
+</header>
 <div class="container p-0">
     <h1>Formulaire</h1>
 
@@ -29,34 +56,37 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST') {
     <div class="card">
         <div class="card-body">
 
-            <form method="POST" action="#">
-                <div class="form-group">
+            <form method="POST" action="success.php">
+              <!--  <div class="form-group">
                     <label for="pseudo">Pseudo</label>
                     <input type="text" class="form-control" id="pseudo" aria-describedby="textHelp" placeholder="Veuillez préciser votre pseudo, s'il vous plait." required>
                     <small id="textHelp" class="form-text text-muted">Veuillez préciser votre pseudo, s'il vous plait</small>
-                </div>
+                </div> -->
 
                 <div class="form-group">
                     <label for="lastname">Nom</label>
-                    <input type="text" class="form-control" id="lastname" aria-describedby="textHelp" placeholder="Veuillez préciser votre nom, s'il vous plait." required>
+                    <input type="text" class="form-control" id="lastname" name="nom" value="<?= $_POST['lastname'] ?? "" ?>" aria-describedby="textHelp" placeholder="Veuillez préciser votre nom, s'il vous plait." required>
                     <small id="textHelp" class="form-text text-muted">Veuillez préciser votre nom s'il vous plait</small>
+                    <p><?= $errors["lastname"] ?? "" ?></p>
                 </div>
 
                 <div class="form-group">
                     <label for="firstname">Prénom</label>
-                    <input type="text" class="form-control" id="firstname" aria-describedby="textHelp" placeholder="Veuillez préciser votre nom, s'il vous plait." required>
+                    <input type="text" class="form-control" id="firstname" name="prénom" value="<?= $_POST['firstname'] ?? "" ?>" aria-describedby="textHelp" placeholder="Veuillez préciser votre nom, s'il vous plait." required>
                     <small id="textHelp" class="form-text text-muted">Veuillez préciser votre prénom, s'il vous plait</small>
+                    <p><?= $errors["firstname"] ?? "" ?></p>
                 </div>
 
                 <div class="form-group">
                     <label for="title">Titre</label>
-                    <input type="text" class="form-control" id="title" aria-describedby="textHelp" placeholder="Veuillez préciser un titre, s'il vous plait." required>
+                    <input type="text" class="form-control" id="title" name="titre" value="<?= $_POST['title'] ?? "" ?>" aria-describedby="textHelp" placeholder="Veuillez préciser un titre, s'il vous plait." required>
                     <small id="textHelp" class="form-text text-muted">Veuillez préciser un titre, s'il vous plait</small>
+                    <p><?= $errors['title'] ?? "" ?></p>
                 </div>
 
                 <div class="form-group">
                     <label for="textarea">Postez votre idée 💡</label>
-                    <textarea class="form-control" id="textarea" rows="3"></textarea>
+                    <textarea class="form-control" id="textarea" rows="3" name="message"><?= $_POST['message'] ?? "" ?></textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -64,10 +94,15 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST') {
             </form>
         </div>
     </div>
-
 </div>
 
+<footer>
+    <?php
 
+    require 'footer.php'
+
+    ?>
+</footer>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
