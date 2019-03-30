@@ -23,16 +23,16 @@ function cleanData(array $data) : array
 
 function tag(int $tag) : string
 {
-    if ($tag = 1 ) {
-        $logo = '<i class="far fa-edit"></i>';
+    if ($tag == 1 ) {
+        $logo = 'light-bulb_blue.png';
     }
 
-    if ($tag = 2 ) {
-        $logo = '<i class="fas fa-cart-plus"></i>';
+    if ($tag == 2 ) {
+        $logo = 'light-bulb_green.png';
     }
 
-    if ($tag = 3 ) {
-        $logo = '<i class="fas fa-tools"></i>';
+    if ($tag == 3 ) {
+        $logo = 'light-bulb_yellow.png';
     }
     return $logo;
 }

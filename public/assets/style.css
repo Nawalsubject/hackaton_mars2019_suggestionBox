@@ -10,10 +10,18 @@ h2 {
 h3 {
     font-size:1.8rem;
 }
+p {
+    font-size:1rem;
+}
+
 h1 {
     font-family: 'Cabin Sketch', cursive;
 }
 
+.iconpic {
+    width:40px;
+    height:40px;
+}
 
 .navbar {
     background-color: #00BCAC;
@@ -36,7 +44,7 @@ a {
     height: 4rem;
 }
 
-.headerBotron {
+.jumbotron {
     background-color: #DFDBE3;
 }
 
