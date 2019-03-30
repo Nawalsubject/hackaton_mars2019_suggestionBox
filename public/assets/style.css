@@ -1,9 +1,35 @@
 .navbar {
     background-color: #00BCAC;
 }
+.nav-link {
+    font-size: 1.3rem;
+}
+
+/*.navbar-brand {
+    width: 5%;
+    height: 200px;
+}*/
 
 a {
     color: white;
+}
+
+.headerCard {
+    width: 50%;
+    height: 4rem;
+}
+
+.headerBotron {
+    background-color: #DFDBE3;
+}
+
+.headerBotron p{
+    font-size: 1.3rem;
+    font-weight: lighter;
+}
+.headerBotron > span {
+    font-style: italic;
+    font-weight: bold;
 }
 
 .footerBotron {
@@ -14,4 +40,3 @@ a {
     list-style-type: none;
 }
 
-#00B29F
