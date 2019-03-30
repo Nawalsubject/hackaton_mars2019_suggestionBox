@@ -1,34 +1,37 @@
 <?php
 
-require 'src/connec.php';
 $pdo = new PDO(DSN, USER, PASS);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-$errors = [];
+    $errors = [];
 
 // Clean the $_POST data
-$data = cleanData($_POST);
+    $data = cleanData($_POST);
 
 
-/** VERIFICATION OF THE DATA */
+    /** VERIFICATION OF THE DATA */
 
-if (empty($data['comment']) OR strlen($data['comment']) > 255) {
-    $errors['comment'] = 'Veuillez ajouter un commentaire';
-}
+    if (empty($data['comment']) OR strlen($data['comment']) > 140) {
+        $errors['comment'] = 'Veuillez ajouter un commentaire';
+    }
 
-/** IF EVERYTHING IS OK -> INSERTION IN MY DATABASE */
-if (empty($errors)) {
+    /** IF EVERYTHING IS OK -> INSERTION IN MY DATABASE */
+    if (empty($errors)) {
 
-    $query = "INSERT INTO eval (id, comment) VALUES (NULL, :comment)";
-    $statement = $pdo->prepare($query);
-    $statement->bindValue(':comment', $data['comment'], PDO::PARAM_STR);
+        $query = "INSERT INTO eval (comment, ideaid) VALUES (:comment, ideaid)";
+        $statement = $pdo->prepare($query);
+        $statement->bindValue(':comment', $data['comment'], PDO::PARAM_STR);
+        $statement->bindValue(':ideaid', $idIdeaAsked, PDO::PARAM_STR);
 
-    $statement->execute();
 
-    header('Location: ../public/index.php');
-    exit();
-} ?>
+        $statement->execute();
+
+        header('Location: ../public/index.php');
+        exit();
+    }
+}?>
+
 
 <form action="formComment.php" method="post">
     <div class="form-group ">
@@ -37,4 +40,6 @@ if (empty($errors)) {
                   maxlength="140" required><?= $data['comment'] ?? '' ?></textarea>
         <p><?= $errors['comment'] ?? '' ?></p>
     </div>
+    <button type="button" class="btn btn-dark">Ajouter</button>
 </form>
+

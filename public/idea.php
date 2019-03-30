@@ -54,7 +54,10 @@ var_dump($idea);
         <h3><?= $idea['title'] ?></h3>
         <p><?= $idea['message'] ?></p>
     </div>
-    <?php foreach ($evaluations as $evaluation) :
+
+    <?php require '../src/formComment.php';
+
+    foreach ($evaluations as $evaluation) :
     ?>
     <?php if (!empty($evaluation['comment'])) : ?>
     <div>
