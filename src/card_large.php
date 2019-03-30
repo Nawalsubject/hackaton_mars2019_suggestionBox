@@ -1,4 +1,4 @@
-<div class="card user-card pb-0">
+<div class="card user-card headerBotron pb-0">
     <div class="card-header py-3 text-center">
         <h4 class="col"><?= $idea['title'] ?></h4>
     </div>
