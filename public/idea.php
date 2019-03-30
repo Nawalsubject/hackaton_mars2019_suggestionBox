@@ -63,10 +63,10 @@ $idea = $statementIdea->fetch(PDO::FETCH_ASSOC);
             <p><?= $evaluation['comment'] ?></p>
             <?php endif; ?>
             <?php endforeach; ?>
+            <?php require '../src/formComment.php'; ?>
         </div>
     </div>
 
-    <?php require '../src/formComment.php'; ?>
 </main>
 <?php require 'footer.php' ?>
 
