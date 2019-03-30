@@ -53,7 +53,7 @@ $idea = $statementIdea->fetch(PDO::FETCH_ASSOC);
     <div class="container justify-content-center">
         <h2 class="text-warning text-center my-3">L'idée de <?= $idea['firstname'] ?></h2>
         <?php require '../src/card_large.php'; ?>
-
+        <?php require '../src/formComment.php'; ?>
         <?php foreach ($evaluations as $evaluation) :
         ?>
         <?php if (!empty($evaluation['comment'])) : ?>
@@ -80,7 +80,7 @@ $idea = $statementIdea->fetch(PDO::FETCH_ASSOC);
             </div>
             <?php endif; ?>
             <?php endforeach; ?>
-            <?php require '../src/formComment.php'; ?>
+
     </div>
 
 </main>
