@@ -46,7 +46,7 @@ $idea = $statementIdea->fetch(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="assets/cards.css"/>
     <title>Just box it</title>
 </head>
-<body>
+<body class="m-0">
 <?php require 'header.php' ?>
 <main>
 
