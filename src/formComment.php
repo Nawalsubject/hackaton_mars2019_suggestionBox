@@ -54,12 +54,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="col-1 mt-5  pt-3">
         <button type="submit" class="btn btn-danger" name="dislikes" value="0"><i class="fas fa-heart-broken"></i>
         </button>
-        <p><?= counterDislikes($pdo, $idea['categoryid']) ?></p>
+        <p><?= counterDislikes($pdo, $idea['ididea']) ?></p>
     </div>
 
     <div class="col-1 mt-5 pt-3">
         <button type="submit" class="btn btn-success" name="likes" value="1"><i class="fas fa-heart"></i></button>
-        <p><?= counterLikes($pdo, $idea['categoryid']) ?></p>
+        <p><?= counterLikes($pdo, $idea['ididea']) ?></p>
     </div>
     </form>
 </div>

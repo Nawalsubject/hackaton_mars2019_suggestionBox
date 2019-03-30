@@ -57,13 +57,30 @@ $idea = $statementIdea->fetch(PDO::FETCH_ASSOC);
         <?php foreach ($evaluations as $evaluation) :
         ?>
         <?php if (!empty($evaluation['comment'])) : ?>
-        <div class="container justify-content-center">
-            <h3>Commentaire du <?= $evaluation['date'] ?></h3>
-            <p><?= $evaluation['comment'] ?></p>
+            <div class="card
+                <?php $borderLikeStatus= " border-success border-outline-success ";
+                        echo likeStatusComment($pdo,$evaluation['eval']);
+                    if (!likeStatusComment($pdo,$evaluation['eval'])) {
+                        $borderLikeStatus= " border-danger border-outline-danger ";
+                    }
+
+                    echo $borderLikeStatus;?>
+                    ">
+                <div class="card-header">
+                    <h5>Commentaire du
+                    <?php
+                    $phpdate = strtotime($evaluation['date']);
+                    $mysqldate = date('d/m/Y', $phpdate);
+                    echo $mysqldate;
+                    ?></h5>
+                </div>
+                <div class="card-body">
+                    <p><?= $evaluation['comment'] ?></p>
+                </div>
+            </div>
             <?php endif; ?>
             <?php endforeach; ?>
             <?php require '../src/formComment.php'; ?>
-        </div>
     </div>
 
 </main>

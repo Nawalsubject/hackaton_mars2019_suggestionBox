@@ -16,15 +16,15 @@
         <div class="row">
             <div class="col-4">
                 <i class="fas fa-heart-broken"></i>
-                <p><?= counterDislikes($pdo, $idea['categoryid']) ?></p>
+                <p><?= counterDislikes($pdo, $idea['ididea']) ?></p>
             </div>
             <div class="col-4">
                 <i class="fa fa-comment"></i>
-                <p><?= counterComment($pdo, $idea['categoryid']) ?></p>
+                <p><?= counterComment($pdo, $idea['ididea']) ?></p>
             </div>
             <div class="col-4">
                 <i class="fas fa-heart"></i>
-                <p><?= counterLikes($pdo, $idea['categoryid']) ?></p>
+                <p><?= counterLikes($pdo, $idea['ididea']) ?></p>
             </div>
         </div>
         <p class="mb-0 mt-1 pt-2 text-muted text-right text_date ">
