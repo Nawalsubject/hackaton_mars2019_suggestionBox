@@ -21,6 +21,16 @@ $queryIdea = "SELECT * FROM idea";
 $statementIdea = $pdo->query($queryIdea);
 $ideas = $statementIdea->fetchAll(PDO::FETCH_ASSOC);
 $idea = $ideas[randomIdeas($ideas)];
+
+$pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+// recovers categories table //
+
+$queryBestIdeas = "SELECT COUNT(eval) as counteval,  idea.* ";
+$queryBestIdeas .= " FROM eval JOIN idea ON ideaid=ididea ";
+$queryBestIdeas .= " WHERE eval GROUP BY idea.ididea ";
+$queryBestIdeas .= " ORDER BY counteval DESC;";
+$statementBestIdeas= $pdo->query($queryBestIdeas);
+$bestideas = $statementBestIdeas->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!doctype html>
@@ -58,9 +68,31 @@ $idea = $ideas[randomIdeas($ideas)];
     <h2 id="bestID" class="text-warning text-center my-3">LES MEILLEURES IDEES DU MOMENT ...</h2>
     <div class="container">
         <div class="row">
-            <?php include '../src/cards.php' ?>
-            <?php include '../src/cards.php' ?>
-            <?php include '../src/cards.php' ?>
+
+            <?php
+                $colorcards=[];
+                foreach($bestideas as $idea) : ?>
+                <?php
+                    $ranking = getRanking($pdo,$idea['ididea']);
+                    switch ($idea['categoryid']) {
+                     case '1':
+                         $colorcards['bgcolor']="bg-c-blue";
+                         $colorcards['levalcolor']="activity-leval-blue";
+                         $colorcards['bordercolor']= "border-primary";
+                         break;
+                     case '2':
+                         $colorcards['bgcolor'] = "bg-c-green";
+                         $colorcards['levalcolor']="activity-leval-green";
+                         $colorcards['bordercolor']= "border-success";
+                         break;
+                     case '3':
+                         $colorcards['bgcolor']= "bg-c-yellow";
+                         $colorcards['levalcolor']="activity-leval-yellow";
+                         $colorcards['bordercolor']= "border-warning";
+                         break;
+                 };
+                include '../src/cards.php'; ?>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
