@@ -17,7 +17,13 @@
                     <p class="m-t-15 text-muted text-justify"><?= $idea['message'] ?> </p>
                 </div>
                 <hr>
-                <p class="text-muted m-t-15 mb-1"><!-- Barometre good / bad idea --><?= $ranking ?> %</p>
+                <p class="text-muted m-t-15 mb-1"><!-- Barometre good / bad idea -->
+                    <?php
+                    if ($ranking > 100) {
+                        $ranking=100;
+                    }
+                    echo $ranking;
+                    ?> %</p>
                 <!-- activity-leval-blue // activity-leval-green // activity-leval-yellow // -->
                 <div class="progress my-3">
                     <div class="progress-bar <?= $colorcards['bgcolor'] ?>" role="progressbar"
