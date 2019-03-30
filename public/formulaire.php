@@ -1,5 +1,11 @@
 <?php
 
+require '../src/connec.php';
+$pso = new PDO(DSN,USER, PASS);
+$query = "SELECT * FROM justboxit";
+$statement=$pdo->query($query);
+$contributors=$statement->fetchAll(PDO::FETCH_ASSOC);
+
 if ($_SERVER['REQUEST_METHOD'] ==='POST') {
     $errors =[];
 
@@ -17,14 +23,22 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST') {
     if (empty($_POST['message']) > 140) {
         $errors['message'] = "Votre message ne peut pas dépasser 140 caractères";
     }
-
-    if (count($errors) == 0) {
-        header("success.php");
-        exit();
+//
+//    if (count($errors) == 0) {
+//        header("success.php");
+//        exit();
     }
-}
-
-
+    if (empty($errors)) {
+        $query = "INSERT INTO justboxit (ididea, firstname, lastname, title, message) VALUES (:ididea, :firstname, :lastname, :title, :message )";
+    }
+    $statement = $pdo->prepare($query);
+    $statement->bindValue(':lastname', $_POST['lastname'], PDO::PARAM_STR);
+    $statement->bindValue(':firstname', $_POST['firstname'], PDO::PARAM_STR);
+    $statement->bindValue(':title', $_POST['title'], PDO::PARAM_STR);
+    $statement->bindValue(':message', $_POST['message'], PDO::PARAM_STR);
+    $statement->execute();
+    header("success.php");
+    exit();
 
 
 ?>
@@ -45,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST') {
 <header>
     <?php
 
-    require 'header.php';
+    require "header.php";
 
     ?>
 </header>
@@ -57,22 +71,16 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST') {
         <div class="card-body">
 
             <form method="POST" action="success.php">
-              <!--  <div class="form-group">
-                    <label for="pseudo">Pseudo</label>
-                    <input type="text" class="form-control" id="pseudo" aria-describedby="textHelp" placeholder="Veuillez préciser votre pseudo, s'il vous plait." required>
-                    <small id="textHelp" class="form-text text-muted">Veuillez préciser votre pseudo, s'il vous plait</small>
-                </div> -->
-
                 <div class="form-group">
                     <label for="lastname">Nom</label>
-                    <input type="text" class="form-control" id="lastname" name="nom" value="<?= $_POST['lastname'] ?? "" ?>" aria-describedby="textHelp" placeholder="Veuillez préciser votre nom, s'il vous plait." required>
-                    <small id="textHelp" class="form-text text-muted">Veuillez préciser votre nom s'il vous plait</small>
+                    <input type="text" class="form-control" id="lastname" name="nom" value="<?= $_POST['lastname'] ?? '' ?>" aria-describedby="textHelp" placeholder="Veuillez préciser votre nom, s\'il vous plait." required>
+                    <small id="textHelp" class="form-text text-muted">Veuillez préciser votre nom s\'il vous plait</small>
                     <p><?= $errors["lastname"] ?? "" ?></p>
                 </div>
 
                 <div class="form-group">
                     <label for="firstname">Prénom</label>
-                    <input type="text" class="form-control" id="firstname" name="prénom" value="<?= $_POST['firstname'] ?? "" ?>" aria-describedby="textHelp" placeholder="Veuillez préciser votre nom, s'il vous plait." required>
+                    <input type="text" class="form-control" id="firstname" name="prénom" value="<?= $_POST['firstname'] ?? "" ?>" aria-describedby="textHelp" placeholder="Veuillez préciser votre nom, s\'il vous plait." required>
                     <small id="textHelp" class="form-text text-muted">Veuillez préciser votre prénom, s'il vous plait</small>
                     <p><?= $errors["firstname"] ?? "" ?></p>
                 </div>
@@ -82,6 +90,15 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST') {
                     <input type="text" class="form-control" id="title" name="titre" value="<?= $_POST['title'] ?? "" ?>" aria-describedby="textHelp" placeholder="Veuillez préciser un titre, s'il vous plait." required>
                     <small id="textHelp" class="form-text text-muted">Veuillez préciser un titre, s'il vous plait</small>
                     <p><?= $errors['title'] ?? "" ?></p>
+                </div>
+
+                <div class="form-group">
+                    <select class="custom-select">
+                        <option selected>Thème</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
