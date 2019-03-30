@@ -18,6 +18,10 @@ h1 {
     font-family: 'Cabin Sketch', cursive;
 }
 
+.iconpic {
+    width:40px;
+    height:40px;
+}
 
 .navbar {
     background-color: #00BCAC;

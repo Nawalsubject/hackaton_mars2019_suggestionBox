@@ -1,10 +1,15 @@
 <div class="col-md-4">
     <div class="card <?= $colorcards['bordercolor'] ?> user-card ">
             <div class="card-block py-3 text-left">
-                <h5 class="f-w-600"><?= ucfirst(strtolower($idea['firstname'])) . ' ' . strtoupper($idea['lastname']) ?>  </h5>
+                <h5 class="f-w-600"><?= ucfirst(strtolower($idea['firstname'])) . ' ' . strtoupper($idea['lastname']) ?> </h5>
             </div>
+        <div class="card-img-overlay">
+            <div class="card-body text-right p-1">
+                <h3><span class="card-text"><img class="iconpic" src="assets/img/<?= tag($idea['categoryid']); ?>"></h3>
+            </div>
+        </div>
             <div class="card-header py-3 text-center">
-                <h4 class="col"><?= $idea['title'] ?></h4>
+                <h4 class="col"><?= $idea['title'] ?> </h4>
             </div>
             <div class="card-block">
                 <hr>
@@ -20,8 +25,7 @@
                          aria-valuemax="100"></div>
                 </div>
                 <!-- bg-c-blue // bg-c-green // bg-c-yellow // -->
-                <div class="<?= $colorcards['bgcolor'] ?>" counter-block m-t-10 p-15
-                ">
+                <div class="<?= $colorcards['bgcolor'] ?> counter-block m-t-10 p-15" >
                 <div class="row pt-3">
                     <div class="col-4">
                         <i class="fas fa-heart-broken"></i>
