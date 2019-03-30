@@ -1,3 +1,21 @@
+
 .card {
     background: linear-gradient(45deg,#00B29F,#00B29F);
 }
+
+.navbar {
+    background-color: #00BCAC;
+}
+
+a {
+    color: white;
+}
+
+.footerBotron {
+    background-color: #00BCAC;
+}
+
+.footerBotron ul {
+    list-style-type: none;
+}
+
