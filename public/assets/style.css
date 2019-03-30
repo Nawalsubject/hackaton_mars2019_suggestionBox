@@ -1,3 +1,17 @@
+
+@import url('https://fonts.googleapis.com/css?family=Cabin+Sketch');
+
+h2, h3 {
+    font-family: 'Cabin Sketch', cursive;
+}
+h2 {
+    font-size:2.2rem;
+}
+h3 {
+    font-size:1.8rem;
+}
+
+
 .navbar {
     background-color: #00BCAC;
 }
@@ -39,4 +53,3 @@ a {
 .footerBotron ul {
     list-style-type: none;
 }
-
