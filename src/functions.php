@@ -1,5 +1,15 @@
 <?php
 
+function getLimitPushIdea() : int {
+     $limitLikeToPush = 5;
+     return  $limitLikeToPush;
+}
+
+
+function getRanking(PDO $pdorank, int $id) : int {
+    $ranking = round((100/getLimitPushIdea()) * counterLikes($pdorank, $id),0);
+    return  $ranking;
+}
 
 function cleanData(array $data) : array
 {

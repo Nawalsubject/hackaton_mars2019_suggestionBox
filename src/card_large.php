@@ -4,8 +4,8 @@
     </div>
     <div class="card-block">
         <div class="">
-            <p class="m-t-15  text-justify"><?= $idea['message'] ?>   <i
-                        class="text-muted"><?=  $idea['firstname'] ?></i>
+            <p class="m-t-15  text-justify"><?= '"' . $idea['message'] . '"'?> - <i
+                        class="text-muted"><?=  ucfirst (strtolower($idea['firstname'])) . ' ' . strtoupper ($idea['lastname'])?></i>
             </p>
         </div>
         <hr>
@@ -24,5 +24,12 @@
                 <p><?= counterLikes($pdo, $idea['categoryid']) ?></p>
             </div>
         </div>
+        <p class="mb-0 mt-1 pt-2 text-muted text-right ">
+            <?php
+            $phpdate = strtotime( $idea['date'] );
+            $mysqldate = date( 'd/m/Y', $phpdate );
+            echo $mysqldate;
+            ?>
+        </p>
     </div>
 </div>
