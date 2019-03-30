@@ -42,10 +42,10 @@ $idea = $ideas[randomIdeas($ideas)];
     <title>Just box it</title>
 </head>
 <body class="m-0">
-
+<header>
 <?php require 'header.php' ?>
 
-<div class="jumbotron headerBotron jumbotron-fluid">
+<div class="jumbotron headerBotron jumbotron-fluid m-0">
     <div class="container justify-content-center">
         <h1 class="text-warning text-center my-3">L'IDÉE DU JOUR </h1>
 
@@ -53,6 +53,7 @@ $idea = $ideas[randomIdeas($ideas)];
 
     </div>
 </div>
+</header>
 
 <section>
     <h2 id="bestID" class="text-warning text-center my-3">LES MEILLEURES IDEES DU MOMENT ...</h2>

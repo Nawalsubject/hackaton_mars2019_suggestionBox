@@ -25,13 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $statement->bindValue(':ideaid', $idIdeaAsked, PDO::PARAM_STR);
 
 
-        $statement->execute();
-
         header('Location: ../public/index.php');
         exit();
-    }
-}?>
+}
 
+}?>
 
 <form action="formComment.php" method="post">
     <div class="form-group ">

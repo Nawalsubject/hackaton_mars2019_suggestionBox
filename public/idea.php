@@ -25,7 +25,6 @@ $evaluations = $statementEval->fetchAll(PDO::FETCH_ASSOC);
 $queryIdea = "SELECT * FROM idea WHERE ididea=$idIdeaAsked";
 $statementIdea = $pdo->query($queryIdea);
 $idea = $statementIdea->fetch(PDO::FETCH_ASSOC);
-var_dump($idea);
 ?>
 
 
@@ -49,20 +48,22 @@ var_dump($idea);
 <body>
 <?php require 'header.php' ?>
 <main>
-    <div>
-        <h2>Idée de <?= $idea['firstname'] ?></h2>
-        <h3><?= $idea['title'] ?></h3>
-        <p><?= $idea['message'] ?></p>
-    </div>
-<?php
-    foreach ($evaluations as $evaluation) :
-    ?>
-    <?php if (!empty($evaluation['comment'])) : ?>
-    <div>
-        <h3>Commentaire du <?= $evaluation['date'] ?></h3>
-        <p><?= $evaluation['comment'] ?></p>
-        <?php endif; ?>
-        <?php endforeach; ?>
+
+    <div class="container justify-content-center">
+        <h2 class="text-warning text-center my-3">L'idée de <?= $idea['firstname'] ?></h2>
+        <?php require '../src/card_large.php'; ?>
+
+        <?php foreach ($evaluations
+
+        as $evaluation) :
+        ?>
+        <?php if (!empty($evaluation['comment'])) : ?>
+        <div class="container justify-content-center">
+            <h3>Commentaire du <?= $evaluation['date'] ?></h3>
+            <p><?= $evaluation['comment'] ?></p>
+            <?php endif; ?>
+            <?php endforeach; ?>
+        </div>
     </div>
 
     <?php require '../src/formComment.php'; ?>
