@@ -40,14 +40,4 @@ $evaluations = $statementRandom->fetchAll(PDO::FETCH_ASSOC);
         </form>
     </div>
 </nav>
-
-<div class="jumbotron headerBotron jumbotron-fluid">
-    <div class="container justify-content-center">
-        <h1 class="display-4">Idée du jour</h1>
-
-        <?php require '../src/card_large.php'?>
-
-    </div>
-</div>
-
 </header>
