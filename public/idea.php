@@ -2,6 +2,7 @@
 
 // connection to table "category" //
 require '../src/connec.php';
+require '../src/functions.php';
 require '../src/counterIdea.php';
 $pdo = new PDO(DSN, USER, PASS);
 $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
@@ -53,9 +54,7 @@ $idea = $statementIdea->fetch(PDO::FETCH_ASSOC);
         <h2 class="text-warning text-center my-3">L'idée de <?= $idea['firstname'] ?></h2>
         <?php require '../src/card_large.php'; ?>
 
-        <?php foreach ($evaluations
-
-        as $evaluation) :
+        <?php foreach ($evaluations as $evaluation) :
         ?>
         <?php if (!empty($evaluation['comment'])) : ?>
         <div class="container justify-content-center">
