@@ -26,9 +26,14 @@
 
 
 </header>
-<div>
+
 <div class="text-center mx-5 my-5"
-<h1>Merci d'avoir partagé votre idée !  💡</h1>
+<h1>Merci d'avoir partagé votre idée !</h1>
+
+    <div class="cols=8">
+    <button type="submit" class="btn btn-primary mb-2"><a href="index.php">Retour à l'accueil ! 💡  </a></button>
+    </div>
+
 </div>
 </body>
 <footer>
