@@ -42,6 +42,8 @@ $ideas = $statementIdea->fetchAll(PDO::FETCH_ASSOC);
 
 <?php require 'header.php' ?>
 
+
+
 <?php require 'footer.php'?>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

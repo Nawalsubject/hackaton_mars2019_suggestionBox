@@ -10,6 +10,7 @@ function cleanData(array $data) : array
 };
 
 
+
 function tag(int $tag) : string
 {
     if ($tag = 1 ) {
