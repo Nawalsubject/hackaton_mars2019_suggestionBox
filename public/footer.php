@@ -1,3 +1,4 @@
+<footer>
 <div class="jumbotron footerBotron jumbotron-fluid">
     <div class="container ">
         <div class="row text-center">
@@ -18,4 +19,4 @@
 
     </div>
 </div>
-</div>
+</footer>

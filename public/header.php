@@ -1,8 +1,4 @@
-<?php
-?>
 
-
-<header>
 <nav class="navbar sticky-top navbar-expand-lg py-2">
     <a class="navbar-brand" href="index.php"><img src="assets/img/logo_justboxit.png" class="d-inline-block align-top"
                                                   alt="logo de just box it"/></a>
@@ -28,7 +24,3 @@
         </form>
     </div>
 </nav>
-
-
-
-</header>
