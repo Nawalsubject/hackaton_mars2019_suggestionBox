@@ -47,6 +47,15 @@ $idea = $ideas[randomIdeas($ideas)];
 
 
 
+<div class="jumbotron headerBotron jumbotron-fluid">
+    <div class="container justify-content-center">
+        <h1 class="text-warning text-center my-3">L'IDÉE DU JOUR </h1>
+
+        <?php require '../src/card_large.php'?>
+
+    </div>
+</div>
+
 <section>
     <h2 class="text-warning text-center my-3">LES MEILLEURES IDEES DU MOMENT ...</h2>
     <div class="container">
