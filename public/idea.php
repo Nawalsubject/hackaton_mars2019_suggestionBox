@@ -1,7 +1,7 @@
 <?php
 
 // connection to table "category" //
-require '../connec.php';
+require '../src/connec.php';
 require '../src/counterIdea.php';
 $pdo = new PDO(DSN, USER, PASS);
 $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
