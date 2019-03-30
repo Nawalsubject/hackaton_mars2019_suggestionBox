@@ -1,6 +1,17 @@
+<?php
+
+$queryRandom = "SELECT ROUND( RAND() * MAX(ideval) ) as ideval FROM eval;";
+$statementRandom = $pdo->query($queryRandom);
+$evaluations = $statementRandom->fetchAll(PDO::FETCH_ASSOC);
+
+var_dump($evaluations);
+?>
+
+
 <header>
 <nav class="navbar sticky-top navbar-expand-lg py-2">
-    <a class="navbar-brand" href="#">Just box it</a>
+    <a class="navbar-brand" href="index.php"><img src="assets/img/logo_justboxit.png" class="d-inline-block align-top"
+                                                                      alt="logo de just box it"/></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -34,6 +45,8 @@
 <div class="jumbotron headerBotron jumbotron-fluid">
     <div class="container justify-content-center">
         <h1 class="display-4">Idée du jour</h1>
+
+
             <div class="card user-card pb-0">
                 <div class="card-header py-3 text-center">
                     <h4 class="col">Plus de bière</h4>
