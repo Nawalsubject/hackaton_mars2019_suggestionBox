@@ -76,11 +76,12 @@ VALUES (:firstname, :lastname, :title, :message ,'2019/03/31', :category)";
     require "header.php";
     ?>
 </header>
-<div class="container p-0">
+<div class="container p-0 my-5">
+
     <h1>Formulaire</h1>
 
+    <div class="card formIdea my-2">
 
-    <div class="card">
         <div class="card-body">
 
             <form method="POST" action="formulaire.php">
@@ -129,7 +130,7 @@ VALUES (:firstname, :lastname, :title, :message ,'2019/03/31', :category)";
                               name="message"><?= $_POST['message'] ?? "" ?></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-dark">Submit</button>
 
             </form>
         </div>
