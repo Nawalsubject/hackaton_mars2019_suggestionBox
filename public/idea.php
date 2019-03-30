@@ -54,9 +54,7 @@ var_dump($idea);
         <h3><?= $idea['title'] ?></h3>
         <p><?= $idea['message'] ?></p>
     </div>
-
-    <?php require '../src/formComment.php';
-
+<?php
     foreach ($evaluations as $evaluation) :
     ?>
     <?php if (!empty($evaluation['comment'])) : ?>
@@ -66,6 +64,8 @@ var_dump($idea);
         <?php endif; ?>
         <?php endforeach; ?>
     </div>
+
+    <?php require '../src/formComment.php'; ?>
 </main>
 <?php require 'footer.php' ?>
 
