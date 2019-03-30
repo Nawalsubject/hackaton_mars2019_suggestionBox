@@ -1,7 +1,7 @@
 <?php
 
 // connection to table "category" //
-require '../connec.php';
+require '../src/connec.php';
 require '../src/counterIdea.php';
 $pdo = new PDO(DSN, USER, PASS);
 $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
@@ -17,7 +17,7 @@ $statementCategory = $pdo->query($queryCategory);
 $categories = $statementCategory->fetch(PDO::FETCH_ASSOC);
 
 // recovers evaluations table //
-$queryEval = "SELECT * FROM eval";
+$queryEval = "SELECT * FROM eval WHERE ideaid=$idIdeaAsked";
 $statementEval = $pdo->query($queryEval);
 $evaluations = $statementEval->fetchAll(PDO::FETCH_ASSOC);
 
@@ -25,7 +25,7 @@ $evaluations = $statementEval->fetchAll(PDO::FETCH_ASSOC);
 $queryIdea = "SELECT * FROM idea WHERE ididea=$idIdeaAsked";
 $statementIdea = $pdo->query($queryIdea);
 $idea = $statementIdea->fetch(PDO::FETCH_ASSOC);
-
+var_dump($idea);
 ?>
 
 
@@ -37,11 +37,13 @@ $idea = $statementIdea->fetch(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
     <link rel="stylesheet" href="assets/style.css"/>
-
+    <link rel="stylesheet" href="assets/cards.css"/>
     <title>Just box it</title>
 </head>
 <body>
@@ -52,14 +54,15 @@ $idea = $statementIdea->fetch(PDO::FETCH_ASSOC);
         <h3><?= $idea['title'] ?></h3>
         <p><?= $idea['message'] ?></p>
     </div>
-    <?php foreach ($evaluations as $key => $evaluation) {
-    if (!empty($evaluation['comment'])) {?>
+    <?php foreach ($evaluations as $evaluation) :
+    ?>
+    <?php if (!empty($evaluation['comment'])) : ?>
     <div>
         <h3>Commentaire du <?= $evaluation['date'] ?></h3>
         <p><?= $evaluation['comment'] ?></p>
-        <?php } }?>
+        <?php endif; ?>
+        <?php endforeach; ?>
     </div>
-
 </main>
 <?php require 'footer.php' ?>
 

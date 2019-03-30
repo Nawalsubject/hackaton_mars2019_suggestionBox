@@ -10,6 +10,7 @@ function cleanData(array $data) : array
 };
 
 
+
 function tag(int $tag) : string
 {
     if ($tag = 1 ) {
@@ -24,4 +25,11 @@ function tag(int $tag) : string
         $logo = '<i class="fas fa-tools"></i>';
     }
     return $logo;
+}
+
+
+function randomIdeas(array $ideas) : int
+{
+    $randomInt = rand(0, (count($ideas)-1));
+    return $randomInt;
 }

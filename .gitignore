@@ -58,7 +58,11 @@ fabric.properties
 .idea
 superindex.php
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 521947ffb8d7a4a868f414d6dc01d29ed8e88f6e
 =======
 connec.php
 >>>>>>> a3f83ff87102fa3de892693131d164c736266704
+=======
+src/connec.php
+>>>>>>> 41e6f12541b3b83d110c49ef04f84a572c24de8d
