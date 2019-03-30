@@ -26,3 +26,10 @@ function tag(int $tag) : string
     }
     return $logo;
 }
+
+
+function randomIdeas(array $ideas) : int
+{
+    $randomInt = rand(0, (count($ideas)-1));
+    return $randomInt;
+}

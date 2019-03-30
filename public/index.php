@@ -1,6 +1,7 @@
 <?php
 
 require '../src/connec.php';
+require '../src/functions.php';
 $pdo = new PDO(DSN, USER, PASS);
 
 /** DATA RETRIEVAL */
@@ -18,11 +19,11 @@ $evaluations = $statementEval->fetchAll(PDO::FETCH_ASSOC);
 $queryIdea = "SELECT * FROM idea";
 $statementIdea = $pdo->query($queryIdea);
 $ideas = $statementIdea->fetchAll(PDO::FETCH_ASSOC);
-
+$idea = $ideas[randomIdeas($ideas)];
 ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -40,6 +41,11 @@ $ideas = $statementIdea->fetchAll(PDO::FETCH_ASSOC);
 <body class="m-0">
 
 <?php require 'header.php' ?>
+<section>
+    <?php require '../src/card_large.php' ?>
+</section>
+
+
 
 <section>
     <h2 class="text-warning text-center my-3">LES MEILLEURES IDEES DU MOMENT ...</h2>

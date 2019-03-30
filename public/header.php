@@ -1,8 +1,5 @@
 <?php
 
-$queryRandom = "SELECT ROUND( RAND() * MAX(ideval) ) as ideval FROM eval;";
-$statementRandom = $pdo->query($queryRandom);
-$evaluations = $statementRandom->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
