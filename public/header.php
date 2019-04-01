@@ -1,5 +1,5 @@
 
-<nav class="navbar sticky-top navbar-expand-lg py-2">
+<nav class="navbar sticky-top navbar-dark navbar-expand-lg py-2">
     <a class="navbar-brand" href="index.php"><img src="assets/img/logo_justboxit.png" class="d-inline-block align-top"
                                                   alt="logo de just box it"/></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
