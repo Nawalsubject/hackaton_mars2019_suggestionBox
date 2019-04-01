@@ -17,7 +17,13 @@
                     <p class="m-t-15 text-muted text-justify"><?= $idea['message'] ?> </p>
                 </div>
                 <hr>
-                <p class="text-muted m-t-15 mb-1"><!-- Barometre good / bad idea --><?= $ranking ?> %</p>
+                <p class="text-muted m-t-15 mb-1"><!-- Barometre good / bad idea -->
+                    <?php
+                    if ($ranking > 100) {
+                        $ranking=100;
+                    }
+                    echo $ranking;
+                    ?> %</p>
                 <!-- activity-leval-blue // activity-leval-green // activity-leval-yellow // -->
                 <div class="progress my-3">
                     <div class="progress-bar <?= $colorcards['bgcolor'] ?>" role="progressbar"
@@ -29,15 +35,15 @@
                 <div class="row pt-3">
                     <div class="col-4">
                         <i class="fas fa-heart-broken"></i>
-                        <p><?= counterDislikes($pdo, $idea['categoryid']) ?></p> <!-- nombre de bad mother fucker -->
+                        <p><?= counterDislikes($pdo, $idea['ididea']) ?></p> <!-- nombre de bad mother fucker -->
                     </div>
                     <div class="col-4">
                         <i class="fa fa-comment"></i>
-                        <p><?= counterComment($pdo, $idea['categoryid']) ?></p><!-- nombre de commentaires -->
+                        <p><?= counterComment($pdo, $idea['ididea']) ?></p><!-- nombre de commentaires -->
                     </div>
                     <div class="col-4">
                         <i class="fas fa-heart"></i>
-                        <p><?= counterLikes($pdo, $idea['categoryid']) ?></p><!-- nombre de fuck yeah !  -->
+                        <p><?= counterLikes($pdo, $idea['ididea']) ?></p><!-- nombre de fuck yeah !  -->
                     </div>
                 </div>
             </div>

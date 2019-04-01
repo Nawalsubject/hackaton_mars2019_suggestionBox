@@ -53,23 +53,35 @@ $idea = $statementIdea->fetch(PDO::FETCH_ASSOC);
     <div class="container justify-content-center">
         <h2 class="text-warning text-center my-3">L'idée de <?= $idea['firstname'] ?></h2>
         <?php require '../src/card_large.php'; ?>
-
-        <?php foreach ($evaluations
-
-                       as $evaluation) :
-            ?>
-            <?php if (!empty($evaluation['comment'])) : ?>
-            <div class="container justify-content-center">
-            <h3>Commentaire du
-                <?php
-                $phpdate=strtotime($evaluation['date']);
-                $mysqldate = date('d/m/Y', $phpdate);
-            echo $mysqldate; ?></h3>
-            <p><?= $evaluation['comment'] ?></p>
-        <?php endif; ?>
-            </div>
-        <?php endforeach; ?>
         <?php require '../src/formComment.php'; ?>
+
+        <?php foreach ($evaluations as $evaluation) :
+        ?>
+        <?php if (!empty($evaluation['comment'])) : ?>
+            <div class="card
+                <?php $borderLikeStatus= " border-success border-outline-success ";
+                        echo likeStatusComment($pdo,$evaluation['eval']);
+                    if (!likeStatusComment($pdo,$evaluation['eval'])) {
+                        $borderLikeStatus= " border-danger border-outline-danger ";
+                    }
+
+                    echo $borderLikeStatus;?>
+                    ">
+                <div class="card-header">
+                    <h5>Commentaire du
+                    <?php
+                    $phpdate = strtotime($evaluation['date']);
+                    $mysqldate = date('d/m/Y', $phpdate);
+                    echo $mysqldate;
+                    ?></h5>
+                </div>
+                <div class="card-body">
+                    <p><?= $evaluation['comment'] ?></p>
+                </div>
+            </div>
+            <?php endif; ?>
+            <?php endforeach; ?>
+
     </div>
 
 </main>
