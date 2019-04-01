@@ -7,7 +7,6 @@
                 </div>
 
             </div>
-
             <div class="card-header py-3 text-center">
                 <h4 class="col"><?= $idea['title'] ?> </h4>
             </div>
@@ -17,17 +16,14 @@
                     <p class="m-t-15 text-muted text-justify"><?= $idea['message'] ?> </p>
                 </div>
                 <hr>
+
                 <p class="text-muted m-t-15 mb-1"><!-- Barometre good / bad idea -->
-                    <?php
-                    if ($ranking > 100) {
-                        $ranking=100;
-                    }
-                    echo $ranking;
-                    ?> %</p>
+                    <?=  getranking($idea['ididea']); ?> %</p>
                 <!-- activity-leval-blue // activity-leval-green // activity-leval-yellow // -->
                 <div class="progress my-3">
+
                     <div class="progress-bar <?= $colorcards['bgcolor'] ?>" role="progressbar"
-                         style="width: <?= $ranking ?>%" aria-valuenow="<?= $ranking ?>" aria-valuemin="0"
+                         style="width: <?= getRanking($idea['ididea']); ?>%" aria-valuenow="<?=  getranking($idea['ididea']) ?>" aria-valuemin="0"
                          aria-valuemax="100"></div>
                 </div>
                 <!-- bg-c-blue // bg-c-green // bg-c-yellow // -->

@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } ?>
 
 <div class="row formComment justify-content-center my-5" xmlns="http://www.w3.org/1999/html">
-    <div class="col-6">
+    <div class="col-8">
         <form method="post">
             <div class="form-group">
                 <label for="comment">Ajoutez un commentaire de moins de 140 caracteres</label>
@@ -50,16 +50,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p><?= $errors['comment'] ?? '' ?></p>
             </div>
     </div>
-
-    <div class="col-1 mt-5  pt-3">
-        <button type="submit" class="btn btn-danger" name="dislikes" value="0"><i class="fas fa-heart-broken"></i>
-        </button>
-        <p><?= counterDislikes($pdo, $idea['ididea']) ?></p>
-    </div>
-
     <div class="col-1 mt-5 pt-3">
-        <button type="submit" class="btn btn-success" name="likes" value="1"><i class="fas fa-heart"></i></button>
-        <p><?= counterLikes($pdo, $idea['ididea']) ?></p>
+        <button type="submit" class="btn btn-success" name="likes" value="1"><i class="fas fa-heart"></i><span class="px-2" ><?= counterLikes($pdo, $idea['ididea']) ?></button>
     </div>
+    <div class="col-1 mt-5  pt-3">
+        <button type="submit" class="btn btn-danger" name="dislikes" value="0"><i class="fas fa-heart-broken"></i> <span class="px-2" ><?= counterDislikes($pdo, $idea['ididea']) ?></span>
+        </button>
+
+    </div>
+
+
     </form>
 </div>

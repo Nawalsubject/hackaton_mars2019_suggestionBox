@@ -19,8 +19,8 @@ $categories = $statementCategory->fetch(PDO::FETCH_ASSOC);
 
 // recovers evaluations table //
 $queryEval = "SELECT * FROM eval WHERE ideaid=$idIdeaAsked ORDER BY date DESC";
-$statementEval = $pdo->query($queryEval);
-$evaluations = $statementEval->fetchAll(PDO::FETCH_ASSOC);
+$statementEvalComments = $pdo->query($queryEval);
+$evalComments = $statementEvalComments->fetchAll(PDO::FETCH_ASSOC);
 
 // recovers ideas table //
 $queryIdea = "SELECT * FROM idea WHERE ididea=$idIdeaAsked";
@@ -54,32 +54,22 @@ $idea = $statementIdea->fetch(PDO::FETCH_ASSOC);
         <h2 class="text-warning text-center my-3">L'idée de <?= $idea['firstname'] ?></h2>
         <?php require '../src/card_large.php'; ?>
         <?php require '../src/formComment.php'; ?>
-
-        <?php foreach ($evaluations as $evaluation) :
-        ?>
-        <?php if (!empty($evaluation['comment'])) : ?>
+        <?php foreach ($evalComments as $evalComment) :?>
             <div class="card
-                <?php $borderLikeStatus= " border-success border-outline-success ";
-                        echo likeStatusComment($pdo,$evaluation['eval']);
-                    if (!likeStatusComment($pdo,$evaluation['eval'])) {
-                        $borderLikeStatus= " border-danger border-outline-danger ";
-                    }
 
-                    echo $borderLikeStatus;?>
-                    ">
+                <?=  getborderColorComment($evalComment['ideval']);?>">
                 <div class="card-header">
                     <h5>Commentaire du
                     <?php
-                    $phpdate = strtotime($evaluation['date']);
+                    $phpdate = strtotime($evalComment['date']);
                     $mysqldate = date('d/m/Y', $phpdate);
                     echo $mysqldate;
                     ?></h5>
                 </div>
                 <div class="card-body">
-                    <p><?= $evaluation['comment'] ?></p>
+                    <p><?= $evalComment['comment'] ?></p>
                 </div>
             </div>
-            <?php endif; ?>
             <?php endforeach; ?>
 
     </div>
