@@ -18,7 +18,7 @@ $statementCategory = $pdo->query($queryCategory);
 $categories = $statementCategory->fetch(PDO::FETCH_ASSOC);
 
 // recovers evaluations table //
-$queryEval = "SELECT * FROM eval WHERE ideaid=$idIdeaAsked";
+$queryEval = "SELECT * FROM eval WHERE ideaid=$idIdeaAsked ORDER BY date DESC";
 $statementEval = $pdo->query($queryEval);
 $evaluations = $statementEval->fetchAll(PDO::FETCH_ASSOC);
 
@@ -56,16 +56,20 @@ $idea = $statementIdea->fetch(PDO::FETCH_ASSOC);
 
         <?php foreach ($evaluations
 
-        as $evaluation) :
-        ?>
-        <?php if (!empty($evaluation['comment'])) : ?>
-        <div class="container justify-content-center">
-            <h3>Commentaire du <?= $evaluation['date'] ?></h3>
+                       as $evaluation) :
+            ?>
+            <?php if (!empty($evaluation['comment'])) : ?>
+            <div class="container justify-content-center">
+            <h3>Commentaire du
+                <?php
+                $phpdate=strtotime($evaluation['date']);
+                $mysqldate = date('d/m/Y', $phpdate);
+            echo $mysqldate; ?></h3>
             <p><?= $evaluation['comment'] ?></p>
-            <?php endif; ?>
-            <?php endforeach; ?>
-            <?php require '../src/formComment.php'; ?>
-        </div>
+        <?php endif; ?>
+            </div>
+        <?php endforeach; ?>
+        <?php require '../src/formComment.php'; ?>
     </div>
 
 </main>

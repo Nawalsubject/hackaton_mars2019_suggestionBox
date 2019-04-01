@@ -31,7 +31,7 @@
 <h1>Merci d'avoir partagé votre idée !</h1>
 
     <div class="cols=8">
-    <button type="submit" class="btn btn-primary mb-2"><a href="index.php">Retour à l'accueil ! 💡  </a></button>
+    <button type="submit" class="btn btn-dark mb-2"><a href="index.php">Retour à l'accueil ! 💡  </a></button>
     </div>
 
 </div>
