@@ -31,6 +31,11 @@ $queryBestIdeas .= " WHERE eval GROUP BY idea.ididea ";
 $queryBestIdeas .= " ORDER BY counteval DESC  LIMIT 3;";
 $statementBestIdeas= $pdo->query($queryBestIdeas);
 $bestideas = $statementBestIdeas->fetchAll(PDO::FETCH_ASSOC);
+
+
+$queryCategory = "SELECT * FROM category";
+$statementCategory= $pdo->query($queryCategory);
+$categories = $statementCategory->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!doctype html>
@@ -69,7 +74,6 @@ $bestideas = $statementBestIdeas->fetchAll(PDO::FETCH_ASSOC);
     <h2 id="bestID" class="text-warning text-center my-3">LES MEILLEURES IDEES DU MOMENT ...</h2>
     <div class="container">
         <div class="row">
-
             <?php
                 $colorcards=[];
                 foreach($bestideas as $idea) : ?>
@@ -78,6 +82,29 @@ $bestideas = $statementBestIdeas->fetchAll(PDO::FETCH_ASSOC);
                     $colorcards = getColorbyCategory($idea['categoryid']);
                 include '../src/cards.php'; ?>
             <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2 id="bestID" class="text-warning text-center my-3">Les idées ont du style</h2>
+    <div class="container">
+        <div class="row">
+            <?php foreach($categories as $category) :
+                $colorcards = getColorbyCategory($category['idcategory']);
+            ?>
+            <div class="col-md-12">
+                <h3> <span class="card-text"><img class="iconpic" alt="Idée" src="assets/img/<?= tag($category['idcategory']); ?>">Idée <?= $category['category'] ?></h3>
+
+                <div class="card <?= $colorcards['bordercolor'] ?> ">
+                    <div class="card-body font-weight-light">
+                        <h4><?= $category['catdescr'] ?></h4>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+
+
         </div>
     </div>
 </section>

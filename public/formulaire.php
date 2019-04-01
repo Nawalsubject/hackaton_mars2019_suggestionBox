@@ -36,12 +36,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($errors)) {
 
-
+/*
         $phpdate=strtotime(new DateTime());
-        $mysqldate = date('Y/m/d', $phpdate);
+        $mysqldate = date('Y/m/d', $phpdate);*/
 
         $query = "INSERT INTO idea (firstname, lastname, title, message, date, categoryid ) 
-VALUES (:firstname, :lastname, :title, :message ,'2019/03/31', :category)";
+VALUES (:firstname, :lastname, :title, :message ,:date, :category)";
 
         $statement = $pdo->prepare($query);
 
@@ -50,6 +50,7 @@ VALUES (:firstname, :lastname, :title, :message ,'2019/03/31', :category)";
         $statement->bindValue(':title', $data['title'], PDO::PARAM_STR);
         $statement->bindValue(':message', $data['message'], PDO::PARAM_STR);
         $statement->bindValue(':category', $data['category'], PDO::PARAM_INT);
+        $statement->bindValue(':date',GetDateToSQLFormat(), PDO::PARAM_STR);
         $statement->execute();
         header("Location:success.php");
         exit();

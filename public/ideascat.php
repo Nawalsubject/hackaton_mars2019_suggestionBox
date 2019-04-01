@@ -64,34 +64,16 @@ $bestideas = $statementBestIdeas->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </header>
-
 <section>
     <h2 id="bestID" class="text-warning text-center my-3">LES MEILLEURES IDEES DU MOMENT ...</h2>
     <div class="container">
         <div class="row">
-
             <?php
             $colorcards=[];
             foreach($bestideas as $idea) : ?>
                 <?php
-                $ranking = getRanking($pdo,$idea['ididea']);
-                switch ($idea['categoryid']) {
-                    case '1':
-                        $colorcards['bgcolor']="bg-c-blue";
-                        $colorcards['levalcolor']="activity-leval-blue";
-                        $colorcards['bordercolor']= "border-primary";
-                        break;
-                    case '2':
-                        $colorcards['bgcolor'] = "bg-c-green";
-                        $colorcards['levalcolor']="activity-leval-green";
-                        $colorcards['bordercolor']= "border-success";
-                        break;
-                    case '3':
-                        $colorcards['bgcolor']= "bg-c-yellow";
-                        $colorcards['levalcolor']="activity-leval-yellow";
-                        $colorcards['bordercolor']= "border-warning";
-                        break;
-                };
+                $ranking = getRanking($idea['ididea']);
+                $colorcards = getColorbyCategory($idea['categoryid']);
                 include '../src/cards.php'; ?>
             <?php endforeach; ?>
         </div>
@@ -103,34 +85,16 @@ $queryRecentIdeas = "SELECT * FROM idea ORDER BY date DESC LIMIT 3;";
 $statementRecentIdeas= $pdo->query($queryRecentIdeas);
 $recentideas = $statementRecentIdeas->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
 <section>
-    <h2 id="bestID" class="text-warning text-center my-3">LES IDEES LES PLUS RECENTES ...</h2>
+    <h2 id="bestID" class="text-warning text-center my-3">LES IDEES RECENTES ...</h2>
     <div class="container">
         <div class="row">
-
             <?php
             $colorcards=[];
             foreach($recentideas as $idea) : ?>
                 <?php
-                $ranking = getRanking($pdo,$idea['ididea']);
-                switch ($idea['categoryid']) {
-                    case '1':
-                        $colorcards['bgcolor']="bg-c-blue";
-                        $colorcards['levalcolor']="activity-leval-blue";
-                        $colorcards['bordercolor']= "border-primary";
-                        break;
-                    case '2':
-                        $colorcards['bgcolor'] = "bg-c-green";
-                        $colorcards['levalcolor']="activity-leval-green";
-                        $colorcards['bordercolor']= "border-success";
-                        break;
-                    case '3':
-                        $colorcards['bgcolor']= "bg-c-yellow";
-                        $colorcards['levalcolor']="activity-leval-yellow";
-                        $colorcards['bordercolor']= "border-warning";
-                        break;
-                };
+                $ranking = getRanking($idea['ididea']);
+                $colorcards = getColorbyCategory($idea['categoryid']);
                 include '../src/cards.php'; ?>
             <?php endforeach; ?>
         </div>
@@ -150,29 +114,12 @@ $commideas = $statementCommIdeas->fetchAll(PDO::FETCH_ASSOC);
     <h2 id="bestID" class="text-warning text-center my-3">LES IDEES LES PLUS COMMENTEES ...</h2>
     <div class="container">
         <div class="row">
-
             <?php
             $colorcards=[];
             foreach($commideas as $idea) : ?>
                 <?php
-                $ranking = getRanking($pdo,$idea['ididea']);
-                switch ($idea['categoryid']) {
-                    case '1':
-                        $colorcards['bgcolor']="bg-c-blue";
-                        $colorcards['levalcolor']="activity-leval-blue";
-                        $colorcards['bordercolor']= "border-primary";
-                        break;
-                    case '2':
-                        $colorcards['bgcolor'] = "bg-c-green";
-                        $colorcards['levalcolor']="activity-leval-green";
-                        $colorcards['bordercolor']= "border-success";
-                        break;
-                    case '3':
-                        $colorcards['bgcolor']= "bg-c-yellow";
-                        $colorcards['levalcolor']="activity-leval-yellow";
-                        $colorcards['bordercolor']= "border-warning";
-                        break;
-                };
+                $ranking = getRanking($idea['ididea']);
+                $colorcards = getColorbyCategory($idea['categoryid']);
                 include '../src/cards.php'; ?>
             <?php endforeach; ?>
         </div>

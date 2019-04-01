@@ -56,22 +56,15 @@ $idea = $statementIdea->fetch(PDO::FETCH_ASSOC);
         <?php require '../src/formComment.php'; ?>
         <?php foreach ($evalComments as $evalComment) :?>
             <div class="card
-
                 <?=  getborderColorComment($evalComment['ideval']);?>">
-                <div class="card-header">
-                    <h5>Commentaire du
-                    <?php
-                    $phpdate = strtotime($evalComment['date']);
-                    $mysqldate = date('d/m/Y', $phpdate);
-                    echo $mysqldate;
-                    ?></h5>
+                <div class="card-header bg-warning text-white p-2">
+                    <h5><?= DisplayDateFromSQL($evalComment['date'],true);?></h5>
                 </div>
-                <div class="card-body">
+                <div class="card-body p-3">
                     <p><?= $evalComment['comment'] ?></p>
                 </div>
             </div>
             <?php endforeach; ?>
-
     </div>
 
 </main>

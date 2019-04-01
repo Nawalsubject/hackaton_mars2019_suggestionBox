@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $statement->bindValue(':eval', $likeStatus, PDO::PARAM_BOOL);
         $statement->bindValue(':comment', $data['comment'], PDO::PARAM_STR);
         $statement->bindValue(':ideaid', $idIdeaAsked, PDO::PARAM_INT);
-        $statement->bindValue(':date', '2019/03/30');
+        $statement->bindValue(':date', GetDateToSQLFormat());
 
         $statement->execute();
 

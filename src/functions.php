@@ -87,3 +87,18 @@ function randomIdeas(array $ideas) : int
     $randomInt = rand(0, (count($ideas)-1));
     return $randomInt;
 }
+
+function GetDateToSQLFormat() :string
+{
+    $dateNow = new DateTime();
+    return $dateNow->format('Y-m-d H:i:s');
+}
+
+function DisplayDateFromSQL(string $dateSQL, bool $ishour=false ) :string
+{   $date = new DateTime($dateSQL);
+    $dateDisplay =  $date->format('d/m/Y');
+    if ($ishour) {
+        $dateDisplay= $date->format('d/m/Y H:i:s');
+    }
+    return $dateDisplay;
+}
