@@ -56,7 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="col-1 mt-5  pt-3">
         <button type="submit" class="btn btn-danger" name="dislikes" value="0"><i class="fas fa-heart-broken"></i> <span class="px-2" ><?= counterDislikes($pdo, $idea['ididea']) ?></span>
         </button>
-
     </div>
 
 

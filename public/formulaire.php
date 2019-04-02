@@ -4,12 +4,14 @@ require '../src/functions.php';
 $pdo = new PDO(DSN, USER, PASS);
 $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
+// recovers categories table //
+$queryCategory = "SELECT * FROM category";
+$statementCategory = $pdo->query($queryCategory);
+$categories = $statementCategory->fetchall(PDO::FETCH_ASSOC);
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = cleanData($_POST);
     $errors = [];
-    var_dump($data);
-
-    var_dump($_POST);
 
     if (empty($data['lastname']) > 255) {
         $errors['lastname'] = "Votre nom de famille ne peut pas dépasser 255 caractères.";
@@ -23,22 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($data['message']) > 140) {
         $errors['message'] = "Votre message ne peut pas dépasser 140 caractères";
     }
-    if ($data['category'] === 'neuve') {
-        ($data['category'] = 1);
-    }
-    if ($data['category'] === 'evolutive') {
-        ($data['category'] = 2);
-    }
-    if ($data['category'] === 'insolite') {
-        ($data['category'] = 3);
+    if (empty($data['ideacategory'])) {
+        $errors['ideacategory'] = "Le type d'idée doit être défini.";
     }
 
 
     if (empty($errors)) {
-
-/*
-        $phpdate=strtotime(new DateTime());
-        $mysqldate = date('Y/m/d', $phpdate);*/
 
         $query = "INSERT INTO idea (firstname, lastname, title, message, date, categoryid ) 
 VALUES (:firstname, :lastname, :title, :message ,:date, :category)";
@@ -49,7 +41,7 @@ VALUES (:firstname, :lastname, :title, :message ,:date, :category)";
         $statement->bindValue(':firstname', $data['firstname'], PDO::PARAM_STR);
         $statement->bindValue(':title', $data['title'], PDO::PARAM_STR);
         $statement->bindValue(':message', $data['message'], PDO::PARAM_STR);
-        $statement->bindValue(':category', $data['category'], PDO::PARAM_INT);
+        $statement->bindValue(':category', $data['ideacategory'], PDO::PARAM_INT);
         $statement->bindValue(':date',GetDateToSQLFormat(), PDO::PARAM_STR);
         $statement->execute();
         header("Location:success.php");
@@ -91,8 +83,6 @@ VALUES (:firstname, :lastname, :title, :message ,:date, :category)";
                     <input type="text" class="form-control" id="lastname" name="lastname"
                            value="<?= $_POST['lastname'] ?? '' ?>" aria-describedby="textHelp"
                            placeholder="Votre nom ..." required>
- <!--                   <small id="textHelp" class="form-text text-muted">Veuillez préciser votre nom s'il vous plait
-                    </small>-->
                     <p><?= $errors["lastname"] ?? "" ?></p>
                 </div>
 
@@ -101,8 +91,6 @@ VALUES (:firstname, :lastname, :title, :message ,:date, :category)";
                     <input type="text" class="form-control" id="firstname" name="firstname"
                            value="<?= $_POST['firstname'] ?? "" ?>" aria-describedby="textHelp"
                            placeholder="Votre prénom ..." required>
-                 <!--   <small id="textHelp" class="form-text text-muted">Veuillez préciser votre prénom, s'il vous plait
-                    </small>-->
                     <p><?= $errors["firstname"] ?? "" ?></p>
                 </div>
 
@@ -111,27 +99,25 @@ VALUES (:firstname, :lastname, :title, :message ,:date, :category)";
                     <input type="text" class="form-control" id="title" name="title" value="<?= $_POST['title'] ?? "" ?>"
                            aria-describedby="textHelp" placeholder="Ca parle de quoi ? "
                            required>
-                    <small id="textHelp" class="form-text text-muted">Veuillez préciser un titre, s'il vous plait
-                    </small>
                     <p><?= $errors['title'] ?? "" ?></p>
                 </div>
 
-                <div class="form-group">
-                    <select class="custom-select" name="category">
-                        <option selected>Thème</option>
-                        <option value="neuve">Neuve</option>
-                        <option value="evolutive">Evolutive</option>
-                        <option value="insolite">Insolite</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
+                  <div class="form-group">
                     <label for="textarea">Postez votre idée 💡</label>
                     <textarea class="form-control" id="textarea" rows="3"  placeholder="Quelle est votre idée ? (140 caractères maximum)"
                               name="message" required><?= $_POST['message'] ?? "" ?></textarea>
+                    <p><?= $errors['message'] ?? "" ?></p>
                 </div>
 
-                <button type="submit" class="btn btn-dark">Submit</button>
+                <div class="row justify-content-center text-center">
+                <?php foreach ($categories as $category) : ?>
+                <div class="col-4 w-80 my-2 pt-3">
+                    <button type="submit" class="btn btn-light" name="ideacategory" value="<?=$category['idcategory'] ?>">Idée <?= ucfirst($category['category']); ?> <span class="card-text mx-2"><img class="iconpic" alt="Idée" src="assets/img/<?= tag($category['idcategory']); ?>"></button>
+                </div>
+                <?php endforeach; ?>
+                    <p><?= $errors['ideacategory'] ?? "" ?></p>
+                </div>
+
 
             </form>
         </div>
