@@ -79,7 +79,7 @@ VALUES (:firstname, :lastname, :title, :message ,:date, :category)";
 </header>
 <div class="container p-0 my-5">
 
-    <h1>Formulaire</h1>
+    <h1>Une petite idée ... Faites la partager !</h1>
 
     <div class="card formIdea my-2">
 
@@ -90,9 +90,9 @@ VALUES (:firstname, :lastname, :title, :message ,:date, :category)";
                     <label for="lastname">Nom</label>
                     <input type="text" class="form-control" id="lastname" name="lastname"
                            value="<?= $_POST['lastname'] ?? '' ?>" aria-describedby="textHelp"
-                           placeholder="Veuillez préciser votre nom, s'il vous plait." required>
-                    <small id="textHelp" class="form-text text-muted">Veuillez préciser votre nom s'il vous plait
-                    </small>
+                           placeholder="Votre nom ..." required>
+ <!--                   <small id="textHelp" class="form-text text-muted">Veuillez préciser votre nom s'il vous plait
+                    </small>-->
                     <p><?= $errors["lastname"] ?? "" ?></p>
                 </div>
 
@@ -100,16 +100,16 @@ VALUES (:firstname, :lastname, :title, :message ,:date, :category)";
                     <label for="firstname">Prénom</label>
                     <input type="text" class="form-control" id="firstname" name="firstname"
                            value="<?= $_POST['firstname'] ?? "" ?>" aria-describedby="textHelp"
-                           placeholder="Veuillez préciser votre nom, s'il vous plait." required>
-                    <small id="textHelp" class="form-text text-muted">Veuillez préciser votre prénom, s'il vous plait
-                    </small>
+                           placeholder="Votre prénom ..." required>
+                 <!--   <small id="textHelp" class="form-text text-muted">Veuillez préciser votre prénom, s'il vous plait
+                    </small>-->
                     <p><?= $errors["firstname"] ?? "" ?></p>
                 </div>
 
                 <div class="form-group">
                     <label for="title">Titre</label>
                     <input type="text" class="form-control" id="title" name="title" value="<?= $_POST['title'] ?? "" ?>"
-                           aria-describedby="textHelp" placeholder="Veuillez préciser un titre, s'il vous plait."
+                           aria-describedby="textHelp" placeholder="Ca parle de quoi ? "
                            required>
                     <small id="textHelp" class="form-text text-muted">Veuillez préciser un titre, s'il vous plait
                     </small>
@@ -127,8 +127,8 @@ VALUES (:firstname, :lastname, :title, :message ,:date, :category)";
 
                 <div class="form-group">
                     <label for="textarea">Postez votre idée 💡</label>
-                    <textarea class="form-control" id="textarea" rows="3"
-                              name="message"><?= $_POST['message'] ?? "" ?></textarea>
+                    <textarea class="form-control" id="textarea" rows="3"  placeholder="Quelle est votre idée ? (140 caractères maximum)"
+                              name="message" required><?= $_POST['message'] ?? "" ?></textarea>
                 </div>
 
                 <button type="submit" class="btn btn-dark">Submit</button>
