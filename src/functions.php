@@ -68,11 +68,11 @@ function cleanData(array $data) : array
 function tag(int $tag) : string
 {
     if ($tag == 1 ) {
-        $logo = 'light-bulb_blue.png';
+        $logo = 'new_idee.png';
     }
 
     if ($tag == 2 ) {
-        $logo = 'light-bulb_green.png';
+        $logo = 'evolutive_idee.png';
     }
 
     if ($tag == 3 ) {
