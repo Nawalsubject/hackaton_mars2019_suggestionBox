@@ -57,7 +57,7 @@ $idea = $statementIdea->fetch(PDO::FETCH_ASSOC);
         <?php foreach ($evalComments as $evalComment) :?>
             <div class="card
                 <?=  getborderColorComment($evalComment['ideval']);?>">
-                <div class="card-header bg-warning text-white p-2">
+                <div class="card-header bg-active text-white p-2">
                     <h5><?= DisplayDateFromSQL($evalComment['date'],true);?></h5>
                 </div>
                 <div class="card-body p-3">
