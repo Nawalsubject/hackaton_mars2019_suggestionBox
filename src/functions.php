@@ -5,6 +5,15 @@ function getLimitPushIdea() : int {
      return  $limitLikeToPush;
 }
 
+function isValidIdea(PDO $pdo , int $id) : bool {
+    $countLike = counterLikes ($pdo,$id);
+    $result=false;
+    if ($countLike >= getLimitPushIdea()) {
+        $result=true;
+    }
+    return $result;
+}
+
 
 function getborderColorComment(int $id) : string
 {
@@ -62,6 +71,7 @@ function cleanData(array $data) : array
     }
     return $data;
 };
+
 
 
 

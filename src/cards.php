@@ -18,7 +18,12 @@
                 <hr>
 
                 <p class="text-muted m-t-15 mb-1"><!-- Barometre good / bad idea -->
-                    <?=  getranking($idea['ididea']); ?> %</p>
+                    <?php  if (isValidIdea($pdo,$idea['ididea'])) { ?>
+                            <span class="badge badge-pill p-3 badge-success">Idée validée</span>
+                    <?php } else {?>
+                        <?= getranking($idea['ididea']); ?> %</p>
+                <?php }; ?>
+
                 <!-- activity-leval-blue // activity-leval-green // activity-leval-yellow // -->
                 <div class="progress my-3">
 
