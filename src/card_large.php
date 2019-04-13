@@ -1,5 +1,5 @@
 <?php $colorcards = getColorbyCategory($idea['categoryid']); ?>
-<div class="card user-card headerBotron <?= $colorcards['bordercolor'] ?> pb-0 ">
+<div class="card user-card <?= $colorcards['bordercolor'] ?> pb-0 ">
     <div class="card-header py-3 text-center">
         <h3><span class="card-text"><img class="iconpic" alt="Idée" src="assets/img/<?= tag($idea['categoryid']); ?>">
         </h3>

@@ -62,7 +62,7 @@ $categories = $statementCategory->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="jumbotron headerBotron jumbotron-fluid m-0">
     <div class="container justify-content-center">
-        <h1 class="text-warning text-center my-3">L'IDÉE DU JOUR </h1>
+        <h1 class="text-light text-center my-3">L'IDÉE DU JOUR </h1>
 
         <?php require '../src/card_large.php' ?>
 

@@ -16,6 +16,7 @@ p {
 
 h1 {
     font-family: 'Cabin Sketch', cursive;
+    font-size:3.4rem;
 }
 
 .iconpic {
@@ -39,8 +40,12 @@ a {
     height: 4rem;
 }
 
-.jumbotron {
+.headerBotron {
+    background-image: url("img/ideas-banner-1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     background-color: #DFDBE3;
+    height:600px;
 }
 
 .headerBotron p{
