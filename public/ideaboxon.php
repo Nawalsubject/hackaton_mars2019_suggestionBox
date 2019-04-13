@@ -44,13 +44,22 @@ shuffle ($ideas);
         <div class="jumbotron headerBotron jumbotron-fluid m-0">
             <div class="container justify-content-center">
                 <h1 class="text-light text-center my-3">LE BOX'ON </h1>
-
+                <div align="center" class="fond">
+                    <div class="bouton_google">
+                        <div class="google_volet"><img src="assets/img/de.png"/></div>
+                        <a href="javascript:window.location.reload(true)" >
+                            <div class="txt_google">On mélange ?</div>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
+
     </header>
     <main>
 
         <section>
+
             <h2 id="bestID" class="text-warning text-center my-3">DES IDEES EN VRAC ...</h2>
             <div class="container">
                 <div class="row">
@@ -80,6 +89,7 @@ shuffle ($ideas);
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
+    <script src="assets/js/boxonbutton.js"
     </body>
     </html>
 <?php

@@ -19,6 +19,7 @@ h1 {
     font-size:3.4rem;
 }
 
+
 .iconpic {
     width:40px;
     height:40px;
@@ -29,7 +30,18 @@ h1 {
 }
 .nav-link {
     font-size: 1.3rem;
+    padding:2px;
+    border-bottom: 1px solid rgba(255,255,255,0);
+    transition: 0.3s ease-in-out;
 }
+
+
+
+.nav-link:hover {
+    transition: 0.5s ease-in-out;
+    border-bottom: 1px solid rgba(255,255,255,100);
+}
+
 
 a {
     color: white;
@@ -42,11 +54,13 @@ a {
 
 .headerBotron {
     background-image: url("img/ideas-banner-1.jpg");
+
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #DFDBE3;
     height:600px;
 }
+
 
 .headerBotron p{
     font-size: 1.3rem;
@@ -81,4 +95,149 @@ a {
 
 div.jumbotron.headerBotron.jumbotron-fluid.m-0 div.container.justify-content-center div.card.user-card.headerBotron.pb-0 div.card-block p.mb-0.mt-1.pt-2.text-muted.text-right.text_date{
     font-size: 1rem;
+}
+
+
+.button {
+    border: 2px solid #2e2e2e;
+    cursor: pointer;
+    letter-spacing: 0.2125rem;
+    overflow: hidden;
+    padding: 20px 30px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    transition:
+            background 5s cubic-bezier(0.19, 1, 0.22, 1),
+            border 1s cubic-bezier(0.19, 1, 0.22, 1),
+            color 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    user-select: none;
+}
+
+.button a {
+    color: #969696;
+    font-family: "Varela Round";
+    text-decoration: none;
+}
+
+.button .mask {
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 100px;
+    position: absolute;
+    transform: translate3d(-120%, -50px, 0) rotate3d(0, 0, 1, 45deg);
+    transition: all 1.1s cubic-bezier(0.19, 1, 0.22, 1);
+    width: 200px;
+}
+
+.button .shift {
+    display: inline-block;
+    transition: all 1.1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.button:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: #fff;
+    box-shadow: 0 0 5px rgba(255, 245, 245, 0.8);
+    transition: background 0s;
+}
+
+.button:hover a {
+    color: #fff;
+}
+
+.button:hover .mask {
+    background-color: #fff;
+    transform: translate3d(120%, -100px, 0) rotate3d(0, 0, 1, 90deg);
+}
+
+.button:hover .shift {
+    transform: translateX(5px);
+}
+
+.button:active {
+    background-color: #fff;
+}
+
+.button:active a {
+    color: #202020;
+}
+
+body.show {
+    background-color: #282828;
+}
+
+
+.google_volet{
+    width:200px;
+    height:60px;
+    padding:10px;
+    background-color:#dd4b39;
+    position: absolute;
+    z-index: 2;
+}
+.txt_google
+{
+    width:200px;
+    height:60px;
+    padding:10px;
+    position: absolute;
+    z-index: 1;
+    background-color:#ffffff;
+    line-height:40px;
+    font-family:'Roboto';
+    font-weight:300;
+    font-size:26px;
+}
+.bouton_google:hover .google_volet{
+    -webkit-animation: anim 1.2s;-webkit-animation-iteration-count:1;-webkit-animation-fill-mode:forwards;
+    -ms-animation: anim 1.2s;-ms-animation-iteration-count:1;-ms-animation-fill-mode:forwards;
+    -moz-animation: anim 1.2s;-moz-animation-iteration-count:1;-moz-animation-fill-mode:forwards;
+    animation: anim 1.2s;animation-iteration-count:1;animation-fill-mode:forwards;
+}
+.bouton_google {
+    width:200px;
+}
+
+.bouton_google a {
+    text-decoration:none; color:#dd4b39;
+}
+
+
+
+@-webkit-keyframes anim {
+    0% {-webkit-transform: perspective( 600px ) rotateX( 0deg );-webkit-transform-origin:100% 100%;}
+    40% {-webkit-transform: perspective( 600px ) rotateX( -220deg );-webkit-transform-origin:100% 100%;}
+    50% {-webkit-transform: perspective( 600px ) rotateX( -160deg );-webkit-transform-origin:100% 100%;}
+    60% {-webkit-transform: perspective( 600px ) rotateX( -210deg );-webkit-transform-origin:100% 100%;}
+    70% {-webkit-transform: perspective( 600px ) rotateX( -190deg );-webkit-transform-origin:100% 100%;}
+    80% {-webkit-transform: perspective( 600px ) rotateX( -200deg );-webkit-transform-origin:100% 100%;}
+    100% {-webkit-transform: perspective( 600px ) rotateX( -180deg );-webkit-transform-origin:100% 100%;}
+}
+@-ms-keyframes anim {
+    0% {-ms-transform: perspective( 600px ) rotateX( 0deg );-ms-transform-origin:100% 100%;}
+    40% {-ms-transform: perspective( 600px ) rotateX( -220deg );-ms-transform-origin:100% 100%;}
+    50% {-ms-transform: perspective( 600px ) rotateX( -160deg );-ms-transform-origin:100% 100%;}
+    60% {-ms-transform: perspective( 600px ) rotateX( -210deg );-ms-transform-origin:100% 100%;}
+    70% {-ms-transform: perspective( 600px ) rotateX( -190deg );-ms-transform-origin:100% 100%;}
+    80% {-ms-transform: perspective( 600px ) rotateX( -200deg );-ms-transform-origin:100% 100%;}
+    100% {-ms-transform: perspective( 600px ) rotateX( -180deg );-ms-transform-origin:100% 100%;}
+}
+@-moz-keyframes anim {
+    0% {-moz-transform: perspective( 600px ) rotateX( 0deg );-moz-transform-origin:100% 100%;}
+    40% {-moz-transform: perspective( 600px ) rotateX( -220deg );-moz-transform-origin:100% 100%;}
+    50% {-moz-transform: perspective( 600px ) rotateX( -160deg );-moz-transform-origin:100% 100%;}
+    60% {-moz-transform: perspective( 600px ) rotateX( -210deg );-moz-transform-origin:100% 100%;}
+    70% {-moz-transform: perspective( 600px ) rotateX( -190deg );-moz-transform-origin:100% 100%;}
+    80% {-moz-transform: perspective( 600px ) rotateX( -200deg );-moz-transform-origin:100% 100%;}
+    100% {-moz-transform: perspective( 600px ) rotateX( -180deg );-moz-transform-origin:100% 100%;}
+}
+@keyframes anim {
+    0% {transform: perspective( 600px ) rotateX( 0deg );transform-origin:100% 100%;}
+    40% {transform: perspective( 600px ) rotateX( -220deg );transform-origin:100% 100%;}
+    50% {transform: perspective( 600px ) rotateX( -160deg );transform-origin:100% 100%;}
+    60% {transform: perspective( 600px ) rotateX( -210deg );transform-origin:100% 100%;}
+    70% {transform: perspective( 600px ) rotateX( -190deg );transform-origin:100% 100%;}
+    80% {transform: perspective( 600px ) rotateX( -200deg );transform-origin:100% 100%;}
+    100% {transform: perspective( 600px ) rotateX( -180deg );transform-origin:100% 100%;}
 }
